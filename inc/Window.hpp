@@ -4,12 +4,14 @@
 
 # include "Object.hpp"
 
+# include "Debug.hpp"
+
 namespace PixelWizard
 {
     class Window final
     {
     public:
-        Window(unsigned int xSize, unsigned int ySize) noexcept;
+        Window(unsigned int xSize, unsigned int ySize);
         void render();
         bool isOpen() const noexcept;
         void handleEvents() noexcept;
@@ -22,5 +24,13 @@ namespace PixelWizard
     private:
         sf::RenderWindow _window;
         std::vector<std::unique_ptr<Object>> _objects;
+
+#ifdef DEBUG
+        // Debug information
+        sf::Clock _fpsTimer;
+        sf::Font _font;
+        sf::Text _text;
+        int _frameCount;
+#endif
     };
 }
