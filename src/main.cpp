@@ -1,20 +1,14 @@
-#include <SFML/Graphics.hpp>
+#include "Window.hpp"
 
 int main()
 {
 	constexpr unsigned int xWin = 1200, yWin = 500;
-	sf::RenderWindow window(sf::VideoMode(xWin, yWin), "Pixel Wizard");
+	PixelWizard::Window window(xWin, yWin);
 
 	while (window.isOpen())
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-		window.clear();
-		window.display();
+        window.handleEvents();
+        window.render();
 	}
 	return 0;
 }
