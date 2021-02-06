@@ -25,6 +25,8 @@ namespace PixelWizard
         sf::RenderWindow _window;
         std::vector<std::unique_ptr<Object>> _objects;
 
+        sf::RenderTexture _renderTexture;
+
 #ifdef DEBUG
         // Debug information
         sf::Clock _fpsTimer;

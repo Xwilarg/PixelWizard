@@ -4,11 +4,13 @@ namespace PixelWizard
 {
     Window::Window(unsigned int xSize, unsigned int ySize)
         : _window(sf::VideoMode(xSize, ySize), "Pixel Wizard"),
-        _objects()
+        _objects(), _renderTexture()
 #ifdef DEBUG
         , _fpsTimer(), _font(), _text(), _frameCount(0)
 #endif
     {
+        _renderTexture.create(xSize, ySize);
+
         if (!_font.loadFromFile("Resources/font/Barecast.otf"))
             throw new std::runtime_error("Can't load font file");
         _text.setFont(_font);
@@ -20,8 +22,13 @@ namespace PixelWizard
     void Window::render()
     {
         _window.clear();
+        _renderTexture.clear();
+
         for (auto&& o : _objects)
-            o->render(_window);
+            o->render(_renderTexture);
+
+        _renderTexture.display();
+        _window.draw(sf::Sprite(_renderTexture.getTexture()));
 
 #ifdef DEBUG
         _frameCount++;

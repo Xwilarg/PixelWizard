@@ -9,8 +9,8 @@ namespace PixelWizard
         _object->setFillColor(sf::Color::White);
     }
 
-    void Object::render(sf::RenderWindow& window) const noexcept
+    void Object::render(sf::RenderTarget& renderer) const noexcept
     {
-        window.draw(*_object);
+        renderer.draw(*_object);
     }
 }

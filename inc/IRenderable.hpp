@@ -7,6 +7,6 @@ namespace PixelWizard
     class IRenderable
     {
     public:
-        virtual void render(sf::RenderWindow& window) const noexcept = 0;
+        virtual void render(sf::RenderTarget& renderer) const noexcept = 0;
     };
 }
