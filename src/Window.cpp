@@ -11,7 +11,7 @@ namespace PixelWizard
     {
         _window.clear();
         for (auto&& o : _objects)
-            o.render(_window);
+            o->render(_window);
         _window.display();
     }
 

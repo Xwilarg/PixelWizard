@@ -16,11 +16,11 @@ namespace PixelWizard
         template<class T, typename... Args>
         void addObject(Args&&... params) noexcept
         {
-            _objects.emplace_back(std::forward<Args>(params)...);
+            _objects.push_back(std::make_unique<T>(std::forward<Args>(params)...));
         }
 
     private:
         sf::RenderWindow _window;
-        std::vector<Object> _objects;
+        std::vector<std::unique_ptr<Object>> _objects;
     };
 }
