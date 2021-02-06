@@ -6,6 +6,7 @@ namespace PixelWizard
         : _object(std::make_unique<sf::RectangleShape>(size))
     {
         _object->setPosition(position);
+        _object->setFillColor(sf::Color::White);
     }
 
     void Object::render(sf::RenderWindow& window) const noexcept
